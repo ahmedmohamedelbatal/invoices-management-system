@@ -31,17 +31,22 @@
 					</form>
 				</div>
 				<div class="dropdown main-profile-menu nav nav-item nav-link">
-					<a class="profile-user d-flex" href=""><img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}"></a>
+					<a class="profile-user d-flex" href="">
+						@if (Auth::user()->image)
+							<img alt="" src="{{URL::asset('files/'.Auth::user()->image)}}">
+						@else
+							<img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}">
+						@endif
+					</a>
 					<div class="dropdown-menu">
 						<div class="main-header-profile bg-primary p-3">
 							<div class="d-flex wd-100p">
-								<div class="main-img-user"><img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}" class=""></div>
 								<div class="mr-3 my-auto">
 									<h6>{{ Auth::user()->name }}</h6><span>باك ايند ديفيلوبر</span>
 								</div>
 							</div>
 						</div>
-						<a class="dropdown-item" href="#"><i class="bx bx-user-circle"></i>حسابى</a>
+						<a class="dropdown-item" href="{{ route('profile') }}"><i class="bx bx-user-circle"></i>حسابى</a>
 						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="bx bx-log-out"></i> تسجيل الخروج </a>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
 					</div>

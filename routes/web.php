@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SectionController;
@@ -19,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
+Route::get('profile', [UserController::class, 'index'])->name('profile');
+Route::put('profile/update', [UserController::class, 'update'])->name('update-profile');
+Route::post('profile/change-password', [UserController::class, 'change_password'])->name('change_password');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

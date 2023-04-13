@@ -44,7 +44,7 @@ class InvoiceController extends Controller
         ]);
 
         $file = $request->file('invoice_attachment')->getClientOriginalName();
-        $path = $request->file('invoice_attachment')->storeAs('invoices_attachments', $file, 'public_path');
+        $path = $request->file('invoice_attachment')->storeAs('invoices-attachments', $file, 'public_path');
         Invoice::create([
             'invoice_number' => $request->invoice_number,
             'invoice_date' => $request->Date,

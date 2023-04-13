@@ -36,11 +36,6 @@
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="ادخل كلمة المرور" required autocomplete="current-password">
                         @error('password') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                       </div>
-                      <div class="">
-                        @if (Route::has('password.request'))
-                        <p><a class="btn btn-link" href="{{ route('password.request') }}"> نسيت كلمة المرور ؟ </a></p>
-                        @endif
-                      </div>
 
                       <input type="submit" class="btn btn-main-primary btn-block" value="تسجيل الدخول"> 
                     </form>

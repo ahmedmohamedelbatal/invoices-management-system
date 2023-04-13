@@ -14,4 +14,8 @@ class Section extends Model
     public function product() {
         return $this->hasOne(Product::class);
     }
+
+    public function invoice() {
+        return $this->hasOne(Invoice::class);
+    }
 }

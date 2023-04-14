@@ -67,14 +67,14 @@ class InvoiceController extends Controller
     public function edit(int $id) {
         //
     }
-    public function update(Request $request, int $id) {
+    public function update(Request $request) {
         //
     }
 
     public function destroy(Request $request) {
         $invoice_id = $request->id;
         Invoice::find($invoice_id)->delete();
-        session()->flash('delete','تم حذف القسم بنجاج');
+        session()->flash('delete','تم حذف الفاتورة بنجاج');
         return redirect('/invoices');
     }
 

@@ -26,8 +26,8 @@ class InvoiceController extends Controller
     }
     public function store(Request $request) {
         $request->validate([
-            'invoice_number' => 'required',
-            'Date' => 'required',
+            'invoice_number' => 'required|unique:invoices',
+            'Date' => 'required|date',
             'Due_date' => 'required|date',
             'product' => 'required',
             'Section' => 'required',
@@ -38,9 +38,6 @@ class InvoiceController extends Controller
             'Rate_VAT' => 'required',
             'Total' => 'required',
             'invoice_attachment' => 'required|max:10000|mimes:pdf,doc,docx,xlsx,pptx',
-        ], [
-            'required' => 'حقل الادخال هذا مطلوب',
-            'mimes' => 'يرجى ادخال الملف بصيغة صحيحة',
         ]);
 
         $file = $request->file('invoice_attachment')->getClientOriginalName();

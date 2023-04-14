@@ -9,6 +9,11 @@
 	</div>
 </div>
 <div class="alerts-section">
+  @if ($errors->any())
+    @foreach ($errors->all() as $error)
+      <div class="alert alert-danger fade show" role="alert"> {{ $error }} </div>
+    @endforeach
+  @endif
   @if(session()->has('edit'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{ session()->get('edit') }}</strong>
@@ -18,6 +23,7 @@
   </div>
   @endif
 </div>
+
 <div class="row row-sm">
   <div class="col-lg-4">
     <div class="card mg-b-20">
@@ -62,14 +68,12 @@
               @csrf
               @method('PUT')
               <div class="form-group">
-                <label for="FullName">الاسم الكامل</label>
+                <label for="FullName">الاسم الكامل <span>*</span></label>
                 <input type="text" name="name" value="{{$user->name}}" id="FullName" class="form-control @error('name') is-invalid @enderror">
-                @error('name') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
               </div>
               <div class="form-group">
-                <label for="Email">البريد الالكترونى</label>
+                <label for="Email">البريد الالكترونى <span>*</span></label>
                 <input type="email" name="email" value="{{$user->email}}" id="Email" class="form-control @error('email') is-invalid @enderror">
-                @error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
               </div>
               <div class="form-group">
                 <div class="input-group">
@@ -81,7 +85,6 @@
                     <label class="custom-file-label" for="inputGroupFile01">اختيار ملف</label>
                   </div>
                 </div> 
-                @error('image') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
               </div> 
               <input class="btn btn-primary waves-effect waves-light w-md" type="submit" value="حفظ">
             </form>
@@ -91,25 +94,15 @@
             <form role="form" action="{{route('change_password')}}" method="post">
               @csrf
               <div class="form-group">
-                <label for="current_password">كلمة المرور الحالية</label>
+                <label for="current_password">كلمة المرور الحالية <span>*</span></label>
                 <input type="password" placeholder="ادخل كلمة المرور الحالية" name="current_password" required autocomplete="current_password" id="current_password" class="form-control @error('current_password') is-invalid @enderror">
-                @error('current_password')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
               </div>
               <div class="form-group">
-                <label for="Password">كلمة المرور الجديدة</label>
+                <label for="Password">كلمة المرور الجديدة <span>*</span></label>
                 <input type="password" placeholder="ادخل كلمة المرور الجديدة" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                @error('password')
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                  </span>
-                @enderror
               </div>
               <div class="form-group">
-                <label for="RePassword">اعادة ادخال كلمة المرور</label>
+                <label for="RePassword">اعادة ادخال كلمة المرور <span>*</span></label>
                 <input type="password" placeholder="اعادة ادخال كلمة المرور" name="password_confirmation" id="password-confirm" class="form-control" required>
               </div>
               
@@ -121,7 +114,4 @@
     </div>
   </div>
 </div>
-<!-- row closed -->
-@endsection
-@section('js')
 @endsection

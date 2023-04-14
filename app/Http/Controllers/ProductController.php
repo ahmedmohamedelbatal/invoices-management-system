@@ -20,9 +20,10 @@ class ProductController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'product_name' => 'required'
+            'product_name' => 'required|unique:products',
         ], [
             'product_name.required' => 'يرجي ادخال اسم المنتج',
+            'product_name.unique' => 'اسم المنتج مسجل مسبقا',
         ]);
 
         Product::create([
@@ -42,9 +43,10 @@ class ProductController extends Controller
         $product = Product::find($product_id);
  
         $request->validate([
-            'product_name' => 'required'
+            'product_name' => 'required|unique:products,product_name,'.$product_id,
         ], [
             'product_name.required' => 'يرجي ادخال اسم المنتج',
+            'product_name.unique' => 'اسم المنتج مسجل مسبقا',
         ]);
 
         $product->update([

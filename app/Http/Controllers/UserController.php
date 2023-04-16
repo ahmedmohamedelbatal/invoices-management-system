@@ -18,24 +18,29 @@ class UserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::id()],
-            'image' => ['required', 'image', 'max:10000'],
+            'image' => ['image', 'max:10000'],
         ], [
             'name.required' => 'يرجى ادخال الاسم',
             'email.required' => 'يرجى ادخال البريد الالكترونى',
-            'image.required' => 'يرجى ادخال الصورة الشخصية',
+            'image.image' => 'يرجى ادخال الصورة الشخصية بصيغة صحيحة',
         ]);
 
         $user = User::findorFail(Auth::user()->id);
 
-        $image = $request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('profile-images', $image, 'public_path');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('profile-images', $image, 'public_path');
+        } else {
+            $path = null;
+        }
+
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'image' => $path,
         ]);
 
-        session()->flash('edit','تم تعديل بيانات الحساب بنجاج');
+        session()->flash('edit','تم تعديل بيانات الحساب بنجاح');
         return redirect('profile');
     }
 
@@ -51,7 +56,7 @@ class UserController extends Controller
             $user->password = Hash::make($validatedData['password']);
             $user->save();
 
-            session()->flash('edit','تم تعديل كلمة المرور بنجاج');
+            session()->flash('edit','تم تعديل كلمة المرور بنجاح');
             return redirect('profile');
         } else {
             return back()->withErrors(['current_password' => 'كلمة المرور الحالية غير متطابقة']);

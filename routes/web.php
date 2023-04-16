@@ -21,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::prefix('profile')->group(function () {
+Route::prefix('profile')->middleware('auth')->group(function () {
   Route::get('/', [UserController::class, 'index'])->name('profile');
   Route::put('/update', [UserController::class, 'update'])->name('update-profile');
   Route::post('/change-password', [UserController::class, 'change_password'])->name('change_password');  
-})->middleware('auth');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 

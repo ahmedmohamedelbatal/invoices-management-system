@@ -21,16 +21,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('profile', [UserController::class, 'index'])->name('profile');
-Route::put('profile/update', [UserController::class, 'update'])->name('update-profile');
-Route::post('profile/change-password', [UserController::class, 'change_password'])->name('change_password');
+Route::prefix('profile')->group(function () {
+  Route::get('/', [UserController::class, 'index'])->name('profile');
+  Route::put('/update', [UserController::class, 'update'])->name('update-profile');
+  Route::post('/change-password', [UserController::class, 'change_password'])->name('change_password');  
+})->middleware('auth');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::resource('invoices', InvoiceController::class);
+Route::resource('invoices', InvoiceController::class)->middleware('auth');
 
-Route::resource('sections', SectionController::class);
+Route::resource('sections', SectionController::class)->middleware('auth');
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->middleware('auth');
 
-Route::get('section/{id}', [InvoiceController::class, 'GetProducts']);
+Route::get('section/{id}', [InvoiceController::class, 'GetProducts'])->middleware('auth');

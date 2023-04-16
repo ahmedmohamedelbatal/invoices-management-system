@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
     public function index() {
         $sections = Section::all();
         return view('sections.index', compact('sections'));

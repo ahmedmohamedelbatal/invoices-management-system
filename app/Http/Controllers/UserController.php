@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-
     public function index() {
         $user = Auth::user();
         return view('profile.index', compact('user'));
@@ -29,7 +25,7 @@ class UserController extends Controller
             'image.required' => 'يرجى ادخال الصورة الشخصية',
         ]);
 
-        $user = Auth::user();
+        $user = User::findorFail(Auth::user()->id);
 
         $image = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('profile-images', $image, 'public_path');
@@ -44,7 +40,7 @@ class UserController extends Controller
     }
 
     public function change_password(Request $request) {
-        $user = Auth::user();
+        $user = User::findorFail(Auth::user()->id);
 
         $validatedData = $request->validate([
             'current_password' => 'required',

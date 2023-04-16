@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
     public function index() {
         $invoices = Invoice::all();
         return view('invoices.index', compact('invoices'));
@@ -69,6 +65,11 @@ class InvoiceController extends Controller
     }
     public function update(Request $request) {
         //
+    }
+
+    public function show(int $id) {
+        $invoice = Invoice::findorFail($id);
+        return view('invoices.show', compact('invoice'));
     }
 
     public function destroy(Request $request) {

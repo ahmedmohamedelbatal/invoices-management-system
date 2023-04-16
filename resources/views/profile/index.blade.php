@@ -8,6 +8,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="alerts-section">
   @if ($errors->any())
     @foreach ($errors->all() as $error)

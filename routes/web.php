@@ -36,3 +36,5 @@ Route::resource('sections', SectionController::class)->middleware('auth');
 Route::resource('products', ProductController::class)->middleware('auth');
 
 Route::get('section/{id}', [InvoiceController::class, 'GetProducts'])->middleware('auth');
+
+Route::post('pay-invoice/{id}', [InvoiceController::class, 'PayInvoice'])->name('pay-invoice')->middleware('auth');

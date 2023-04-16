@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
@@ -50,10 +51,10 @@ class InvoiceController extends Controller
             'invoice_value_vat' => $request->Value_VAT,
             'invoice_rate_vat' => $request->Rate_VAT,
             'invoice_total' => $request->Total,
-            'invoice_status' => 'غير مدفوعة',
-            'invoice_value_status' => 2,
+            'invoice_status' => 0,
             'invoice_note' => $request->note,
             'invoice_attachment' => $path,
+            'created_by' => (Auth::user()->name)
         ]);
 
         session()->flash('add', 'تم اضافة الفاتورة بنجاح');
@@ -75,12 +76,21 @@ class InvoiceController extends Controller
     public function destroy(Request $request) {
         $invoice_id = $request->id;
         Invoice::find($invoice_id)->delete();
-        session()->flash('delete','تم حذف الفاتورة بنجاج');
+        session()->flash('delete','تم حذف الفاتورة بنجاح');
         return redirect('/invoices');
     }
 
     public function GetProducts(int $id) {
         $products = DB::table("products")->where("section_id", $id)->pluck("product_name", "id");
         return json_encode($products);
+    }
+
+    public function PayInvoice(int $id) {
+        $invoice = Invoice::find($id);
+        $invoice->invoice_status = 1;
+        $invoice->save();
+        
+        session()->flash('edit','تم تغيير حالة الدفع بنجاح');
+        return redirect('/invoices');
     }
 }

@@ -31,7 +31,7 @@
                   <!-- Tabs -->
                   <ul class="nav panel-tabs main-nav-line">
                     <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات الفاتورة</a></li>
-                    {{-- <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li> --}}
+                    <li><a href="#tab5" class="nav-link" data-toggle="tab">حالة الدفع</a></li>
                     {{-- <li><a href="#tab6" class="nav-link" data-toggle="tab">المرفقات</a></li> --}}
                   </ul>
                 </div>
@@ -72,18 +72,46 @@
                             <th scope="row" style="white-space: nowrap;">الاجمالي مع الضريبة</th>
                             <td style="white-space: nowrap;">{{ $invoice->invoice_total }}</td>
                             <th scope="row" style="white-space: nowrap;">الحالة الحالية</th>
-                            <td style="white-space: nowrap;"><span class="badge badge-pill badge-danger">{{ $invoice->invoice_status }}</span></td>
+                            <td style="white-space: nowrap;">@if($invoice->invoice_status == 0) <span class="badge badge-pill badge-danger">غير مدفوعة</span> @else <span class="badge badge-pill badge-success">مدفوعة</span> @endif </td>
                           </tr>
                           <tr>
                             <th scope="row">ملاحظات</th>
-                            <td style="white-space: nowrap;">
-															@if($invoice->invoice_note) {{ $invoice->invoice_note }} @else لم يتم العثور على بيانات @endif
-														</td>
+                            <td style="white-space: nowrap;"> @if($invoice->invoice_note) {{ $invoice->invoice_note }} @else لم يتم العثور على بيانات @endif </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
+
+                  <div class="tab-pane" id="tab5">
+                    <div class="table-responsive mt-15">
+                      <table class="table center-aligned-table mb-0 table-hover" style="text-align: center;">
+                        <thead>
+                          <tr class="text-dark">
+                            <th>رقم الفاتورة</th>
+                            <th>حالة الدفع</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="white-space: nowrap;">{{$invoice->invoice_number}}</td>
+                            <td style="white-space: nowrap;">@if($invoice->invoice_status == 0) <span class="badge badge-pill badge-danger">غير مدفوعة</span> @else <span class="badge badge-pill badge-success">مدفوعة</span> @endif </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="pay-invoice" style="margin-top: 25px">
+                      @if($invoice->invoice_status == '0')
+                      <form action="{{route('pay-invoice', $invoice->id)}}" method="post">
+                        @csrf
+                        <div class="col-md-12">
+                          <p class="text-danger">* يرجى ملاحظة عند تغيير حالة الدفع لا يمكن الرجوع</p>
+                          <input class="btn btn-info" type="submit" value="تغيير حالة الدفع">
+                        </div>
+                      </form>
+                      @endif
+                    </div>
+                  </div>  
                 </div>
               </div>
             </div>

@@ -11,7 +11,6 @@
 	<!--Internal   Notify -->
 	<link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
-
 @section('content')
 <div class="breadcrumb-header justify-content-between">
 	<div class="my-auto">
@@ -45,6 +44,14 @@
     </button>
   </div>
   @endif
+	@if(session()->has('edit'))
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ session()->get('edit') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
 </div>
 
 <div class="row">
@@ -52,7 +59,7 @@
 		<div class="card mg-b-20">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'>
+					<table id="example1" class="table key-buttons text-md-nowrap text-center" data-page-length='50'>
 						<thead>
 							<tr>
 								<th class="border-bottom-0">#</th>
@@ -66,7 +73,6 @@
 								<th class="border-bottom-0" style="white-space: nowrap;">الخصم</th>
 								<th class="border-bottom-0" style="white-space: nowrap;">الاجمالى</th>
 								<th class="border-bottom-0" style="white-space: nowrap;">الحالة</th>
-								<th class="border-bottom-0" style="white-space: nowrap;">ملاحظات</th>
 								<th class="border-bottom-0" style="white-space: nowrap;">مرفق</th>
 								<th class="border-bottom-0" style="white-space: nowrap;">عمليات</th>
 							</tr>
@@ -85,8 +91,7 @@
 								<td style="white-space: nowrap;"> {{$invoice->invoice_value_vat}} </td>
 								<td style="white-space: nowrap;"> {{$invoice->invoice_discount}} </td>
 								<td style="white-space: nowrap;"> {{$invoice->invoice_total}} </td>
-								<td style="white-space: nowrap;"> {{$invoice->invoice_status}} </td>
-								<td style="white-space: nowrap;"> @if($invoice->invoice_note){{$invoice->invoice_note}}@else لم يتم العثور علي بيانات @endif </td>
+								<td style="white-space: nowrap;">@if($invoice->invoice_status == 0) <span class="badge badge-pill badge-danger">غير مدفوعة</span> @else <span class="badge badge-pill badge-success">مدفوعة</span> @endif </td>
 								<td style="white-space: nowrap;"><a href="{{asset('files/'.$invoice->invoice_attachment)}}">عرض المرفق</a></td>
 								<td>
 									<!--<a class="btn btn-sm btn-info" href="#"><i class="fas fa-edit"></i></a>-->

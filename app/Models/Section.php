@@ -9,7 +9,7 @@ class Section extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['section_name', 'section_description', 'created_by'];
+    protected $fillable = ['section_name', 'section_description'];
 
     public function product() {
         return $this->hasOne(Product::class);

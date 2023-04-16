@@ -8,7 +8,6 @@
 <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 @endsection
-
 @section('content')
 <div class="breadcrumb-header justify-content-between">
 	<div class="my-auto">
@@ -33,7 +32,6 @@
     @endforeach
   </div>
   @endif
-
   @if(session()->has('add'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{ session()->get('add') }}</strong>
@@ -42,7 +40,6 @@
     </button>
   </div>
   @endif
-
   @if(session()->has('delete'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{ session()->get('delete') }}</strong>
@@ -51,7 +48,6 @@
     </button>
   </div>
   @endif
-
   @if(session()->has('edit'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{ session()->get('edit') }}</strong>

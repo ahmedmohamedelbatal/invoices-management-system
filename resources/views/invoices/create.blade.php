@@ -156,7 +156,6 @@
   </div>
 </div>
 @endsection
-
 @section('js')
   <!-- Internal Select2 js-->
   <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>

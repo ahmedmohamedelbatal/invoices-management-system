@@ -20,11 +20,11 @@ class Invoice extends Model
         'invoice_amount_commission',
         'invoice_amount_collection',
         'invoice_status',
-        'invoice_value_status',
         'invoice_note',
         'invoice_date',
         'invoice_due_date',
         'invoice_attachment',
+        'created_by'
     ];
 
     public function section() {

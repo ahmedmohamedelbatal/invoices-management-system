@@ -24,7 +24,6 @@ class SectionController extends Controller
         Section::create([
             'section_name' => $request->section_name,
             'section_description' => $request->section_description,
-            'created_by' => (Auth::user()->name),
         ]);
 
         session()->flash('add', 'تم اضافة القسم بنجاح');
@@ -47,14 +46,14 @@ class SectionController extends Controller
             'section_description' => $request->section_description,
         ]);
 
-        session()->flash('edit','تم تعديل القسم بنجاج');
+        session()->flash('edit','تم تعديل القسم بنجاح');
         return redirect('/sections');
     }
 
     public function destroy(Request $request) {
         $section_id = $request->id;
         Section::find($section_id)->delete();
-        session()->flash('delete','تم حذف القسم بنجاج');
+        session()->flash('delete','تم حذف القسم بنجاح');
         return redirect('/sections');
     }
 }

@@ -56,38 +56,38 @@
 						<thead>
 							<tr>
 								<th class="border-bottom-0">#</th>
-								<th class="border-bottom-0">رقم الفاتورة</th>
-								<th class="border-bottom-0">تاريخ الفاتورة</th>
-								<th class="border-bottom-0">تاريخ الاستحقاق</th>
-								<th class="border-bottom-0">القسم</th>
-								<th class="border-bottom-0">المنتج</th>
-								<th class="border-bottom-0">نسبة الضريبة</th>
-								<th class="border-bottom-0">قيمة الضريبة</th>
-								<th class="border-bottom-0">الخصم</th>
-								<th class="border-bottom-0">الاجمالى</th>
-								<th class="border-bottom-0">الحالة</th>
-								<th class="border-bottom-0">ملاحظات</th>
-								<th class="border-bottom-0">مرفق</th>
-								<th class="border-bottom-0">عمليات</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">رقم الفاتورة</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">تاريخ الفاتورة</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">تاريخ الاستحقاق</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">القسم</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">المنتج</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">نسبة الضريبة</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">قيمة الضريبة</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">الخصم</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">الاجمالى</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">الحالة</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">ملاحظات</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">مرفق</th>
+								<th class="border-bottom-0" style="white-space: nowrap;">عمليات</th>
 							</tr>
 						</thead>
 						<tbody>
               <?php $i = 0 ?>
               @foreach ($invoices as $invoice)
 							<tr>
-								<td> <?php $i++ ?> {{$i}} </td>
-								<td> <a href="{{route('invoices.show', $invoice->id)}}"> {{$invoice->invoice_number}} </a> </td>
-								<td> {{$invoice->invoice_date}} </td>
-								<td> {{$invoice->invoice_due_date}} </td>
-								<td> {{$invoice->section->section_name}} </td>
-								<td> {{$invoice->invoice_product}} </td>
-								<td> {{$invoice->invoice_rate_vat}} </td>
-								<td> {{$invoice->invoice_value_vat}} </td>
-								<td> {{$invoice->invoice_discount}} </td>
-								<td> {{$invoice->invoice_total}} </td>
-								<td> {{$invoice->invoice_status}} </td>
-								<td> @if($invoice->invoice_note){{$invoice->invoice_note}}@else لم يتم العثور علي بيانات @endif </td>
-								<td><a href="{{asset('files/'.$invoice->invoice_attachment)}}">عرض المرفق</a></td>
+								<td style="white-space: nowrap;"> <?php $i++ ?> {{$i}} </td>
+								<td style="white-space: nowrap;"> <a href="{{route('invoices.show', $invoice->id)}}"> {{$invoice->invoice_number}} </a> </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_date}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_due_date}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->section->section_name}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_product}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_rate_vat}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_value_vat}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_discount}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_total}} </td>
+								<td style="white-space: nowrap;"> {{$invoice->invoice_status}} </td>
+								<td style="white-space: nowrap;"> @if($invoice->invoice_note){{$invoice->invoice_note}}@else لم يتم العثور علي بيانات @endif </td>
+								<td style="white-space: nowrap;"><a href="{{asset('files/'.$invoice->invoice_attachment)}}">عرض المرفق</a></td>
 								<td>
 									<!--<a class="btn btn-sm btn-info" href="#"><i class="fas fa-edit"></i></a>-->
                   <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-id="{{ $invoice->id }}" data-toggle="modal" data-target="#modaldemo9" href="#modaldemo9" title="حذف"><i class="fa fa-trash" aria-hidden="true"></i></a>

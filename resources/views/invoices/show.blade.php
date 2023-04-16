@@ -43,40 +43,40 @@
                       <table class="table table-striped" style="text-align: center;">
                         <tbody>
                           <tr>
-                            <th scope="row">رقم الفاتورة</th>
-                            <td>{{ $invoice->invoice_number }}</td>
+                            <th scope="row" style="white-space: nowrap;">رقم الفاتورة</th>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_number }}</td>
                             <th scope="row">تاريخ الاصدار</th>
-                            <td>{{ $invoice->invoice_date }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_date }}</td>
                             <th scope="row">تاريخ الاستحقاق</th>
-                            <td>{{ $invoice->invoice_due_date }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_due_date }}</td>
                             <th scope="row">القسم</th>
-                            <td>{{ $invoice->section->section_name }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->section->section_name }}</td>
                           </tr>
 
                           <tr>
                             <th scope="row">المنتج</th>
-                            <td>{{ $invoice->invoice_product }}</td>
-                            <th scope="row">مبلغ التحصيل</th>
-                            <td>{{ $invoice->invoice_amount_collection }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_product }}</td>
+                            <th scope="row" style="white-space: nowrap;">مبلغ التحصيل</th>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_amount_collection }}</td>
                             <th scope="row">مبلغ العمولة</th>
-                            <td>{{ $invoice->invoice_amount_commission }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_amount_commission }}</td>
                             <th scope="row">الخصم</th>
-                            <td>{{ $invoice->invoice_discount }}</td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_discount }}</td>
                           </tr>
 
                           <tr>
-                            <th scope="row">نسبة الضريبة</th>
-                            <td>{{ $invoice->invoice_rate_vat }}</td>
+                            <th scope="row" style="white-space: nowrap;">نسبة الضريبة</th>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_rate_vat }}</td>
                             <th scope="row">قيمة الضريبة</th>
-                            <td>{{ $invoice->invoice_value_vat }}</td>
-                            <th scope="row">الاجمالي مع الضريبة</th>
-                            <td>{{ $invoice->invoice_total }}</td>
-                            <th scope="row">الحالة الحالية</th>
-                            <td><span class="badge badge-pill badge-danger">{{ $invoice->invoice_status }}</span></td>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_value_vat }}</td>
+                            <th scope="row" style="white-space: nowrap;">الاجمالي مع الضريبة</th>
+                            <td style="white-space: nowrap;">{{ $invoice->invoice_total }}</td>
+                            <th scope="row" style="white-space: nowrap;">الحالة الحالية</th>
+                            <td style="white-space: nowrap;"><span class="badge badge-pill badge-danger">{{ $invoice->invoice_status }}</span></td>
                           </tr>
                           <tr>
                             <th scope="row">ملاحظات</th>
-                            <td>
+                            <td style="white-space: nowrap;">
 															@if($invoice->invoice_note) {{ $invoice->invoice_note }} @else لم يتم العثور على بيانات @endif
 														</td>
                           </tr>

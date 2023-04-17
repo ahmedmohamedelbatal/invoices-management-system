@@ -90,12 +90,14 @@
                           <tr class="text-dark">
                             <th>رقم الفاتورة</th>
                             <th>حالة الدفع</th>
+                            <th>تاريخ الدفع</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
                             <td style="white-space: nowrap;">{{$invoice->invoice_number}}</td>
                             <td style="white-space: nowrap;">@if($invoice->invoice_status == 0) <span class="badge badge-pill badge-danger">غير مدفوعة</span> @else <span class="badge badge-pill badge-success">مدفوعة</span> @endif </td>
+                            <td style="white-space: nowrap;">@if($invoice->payment_date) {{$invoice->payment_date}} @else 0000-00-00 @endif</td>
                           </tr>
                         </tbody>
                       </table>

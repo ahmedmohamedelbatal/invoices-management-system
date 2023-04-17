@@ -20,6 +20,7 @@ class Invoice extends Model
         'invoice_amount_commission',
         'invoice_amount_collection',
         'invoice_status',
+        'payment_date',
         'invoice_note',
         'invoice_date',
         'invoice_due_date',

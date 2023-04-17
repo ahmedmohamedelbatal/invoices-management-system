@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\Section;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -88,6 +89,7 @@ class InvoiceController extends Controller
     public function PayInvoice(int $id) {
         $invoice = Invoice::find($id);
         $invoice->invoice_status = 1;
+        $invoice->payment_date = Carbon::now();
         $invoice->save();
         
         session()->flash('edit','تم تغيير حالة الدفع بنجاح');

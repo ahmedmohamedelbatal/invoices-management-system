@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('invoice_amount_collection', 8, 2)->nullable();
             $table->decimal('invoice_amount_commission', 8, 2);
             $table->boolean('invoice_status');
+            $table->date('payment_date')->nullable();
             $table->text('invoice_note')->nullable();
             $table->date('invoice_date');
             $table->date('invoice_due_date');

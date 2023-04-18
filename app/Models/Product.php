@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = ['product_name', 'product_description', 'section_id'];
+  protected $fillable = ['product_name', 'product_description', 'section_id'];
 
-    public function section() {
-        return $this->belongsTo(Section::class);
-    }
+  public function section() {
+    return $this->belongsTo(Section::class);
+  }
 }

@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = ['section_name', 'section_description'];
+  protected $fillable = ['section_name', 'section_description'];
 
-    public function product() {
-        return $this->hasOne(Product::class);
-    }
+  public function product() {
+    return $this->hasOne(Product::class);
+  }
 
-    public function invoice() {
-        return $this->hasOne(Invoice::class);
-    }
+  public function invoice() {
+    return $this->hasOne(Invoice::class);
+  }
 }

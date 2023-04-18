@@ -10,8 +10,8 @@
 <!-- Internal Spectrum-colorpicker css -->
 <link href="{{URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css')}}" rel="stylesheet">
 @endsection
-@section('content')
 
+@section('content')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
   <div class="my-auto">

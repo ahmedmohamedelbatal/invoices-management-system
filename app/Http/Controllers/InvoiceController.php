@@ -95,7 +95,7 @@ class InvoiceController extends Controller
     return redirect('/invoices');
   }
 
-  public function update_attachment(Request $request) {
+  public function UpdateAttachment(Request $request) {
     $request->validate([
       'invoice_attachment' => 'required|max:10000|mimes:pdf,doc,docx,xlsx,pptx',
     ], [

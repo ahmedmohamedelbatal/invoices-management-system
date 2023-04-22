@@ -11,23 +11,23 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::prefix('/')->middleware('auth')->group(function () {
+  Route::get('/', [HomeController::class, 'index'])->name('home');
+
   Route::prefix('profile')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('profile');
     Route::put('/update', [UserController::class, 'update'])->name('update-profile');
     Route::post('/change-password', [UserController::class, 'change_password'])->name('change_password');
   });
 
-  Route::get('/', [HomeController::class, 'index'])->name('home');
-
   Route::resource('invoices', InvoiceController::class);
 
-  Route::resource('sections', SectionController::class);
+  Route::resource('sections', SectionController::class)->except('show');
 
-  Route::resource('products', ProductController::class);
+  Route::resource('products', ProductController::class)->except('show');
 
   Route::get('section/{id}', [InvoiceController::class, 'GetProducts']);
 
   Route::post('pay-invoice/{id}', [InvoiceController::class, 'PayInvoice'])->name('pay-invoice');
 
-  Route::post('update-attachment', [InvoiceController::class, 'update_attachment'])->name('update-attachment');
+  Route::post('update-attachment', [InvoiceController::class, 'UpdateAttachment'])->name('update-attachment');
 });

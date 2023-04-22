@@ -129,7 +129,7 @@
           <h6 class="modal-title">تعديل القسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          <form action="sections/update" method="post" autocomplete="off">
+          <form action="sections/update" method="post">
             {{ csrf_field() }}
             {{ method_field('patch') }}
             <div class="form-group">

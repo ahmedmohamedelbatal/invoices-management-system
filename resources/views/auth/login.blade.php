@@ -28,12 +28,12 @@
                       @csrf
                       <div class="form-group">
                         <label>البريد الإلكتروني</label> 
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="ادخل البريد الإلكتروني" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="ادخل البريد الإلكتروني" name="email" value="{{ old('email') }}" required>
                         @error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                       </div>
                       <div class="form-group">
                         <label>كلمة المرور</label> 
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="ادخل كلمة المرور" required autocomplete="current-password">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="ادخل كلمة المرور" required>
                         @error('password') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
                       </div>
 

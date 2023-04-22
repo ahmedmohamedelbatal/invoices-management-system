@@ -27,22 +27,22 @@
 										@csrf
 										<div class="form-group">
 											<label>الاسم الكامل</label> 												
-											<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="ادخل اسمك الكامل" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+											<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="ادخل اسمك الكامل" name="name" value="{{ old('name') }}" required>
 											@error('name') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
 										</div>
 										<div class="form-group">
 											<label>عنوان البريد الإلكتروني</label> 												
-											<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="ادخل البريد الإلكتروني" name="email" value="{{ old('email') }}" required autocomplete="email">
+											<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="ادخل البريد الإلكتروني" name="email" value="{{ old('email') }}" required>
 											@error('email') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
 										</div>
 										<div class="form-group">
 											<label>كلمة المرور</label> 
-											<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="ادخل كلمة المرور" name="password" required autocomplete="new-password">
+											<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="ادخل كلمة المرور" name="password" required>
 											@error('password') <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span> @enderror
 										</div>
 										<div class="form-group">
 											<label>تأكيد كلمة المرور</label> 
-											<input id="password-confirm" type="password" class="form-control" placeholder="اعادة ادخال كلمة المرور" name="password_confirmation" required autocomplete="new-password">
+											<input id="password-confirm" type="password" class="form-control" placeholder="اعادة ادخال كلمة المرور" name="password_confirmation" required>
 										</div>
 
 										<input type="submit" class="btn btn-main-primary btn-block" value="انشاء حساب"> 
